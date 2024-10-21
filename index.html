@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="IMAGENES/proseport.png" type="image/x-icon">
+    <title>PROSEPORT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos Generales */
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Estilo de la barra de navegación */
+nav {
+    background-color: #3B6F87;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    position: relative; /* Asegura que el menú se alinee correctamente */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    width: 150px;
+}
+
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #2e5b69;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Oculto por defecto en pantallas pequeñas */
+        flex-direction: column;
+        position: absolute; /* Asegúrate de que sea absoluto para posicionar correctamente */
+        top: 60px; /* Ajusta esto según el espacio necesario debajo del nav */
+        left: 0; /* Inicia desde el borde izquierdo */
+        background-color: #3B6F87;
+        width: 100%; /* Asegúrate de que ocupe todo el ancho */
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex; /* Mostrar el menú cuando sea activo */
+    }
+
+    .menu-icon {
+        display: block; /* Mostrar icono del menú en pantallas pequeñas */
+    }
+}
+
+/* Estilo del título */
+h2 {
+    text-align: center;
+    color: #3B6F87;
+}
+
+/* Estilo del carrusel */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-item {
+    min-width: 100%;
+    transition: opacity 0.5s ease;
+}
+
+.carousel-item img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+}
+
+/* Sección "About" */
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 40px 20px;
+    background-color: #3B6F87;
+    color: white;
+    flex-wrap: wrap;
+}
+
+.about-text {
+    flex: 1;
+    padding: 20px;
+    max-width: 500px;
+}
+
+.about-image {
+    width: 300px;
+    border-radius: 10px;
+}
+
+/* Servicios */
+#servicios {
+    text-align: center;
+    padding: 20px;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 imágenes por fila */
+    grid-gap: 20px; /* Espacio entre imágenes */
+    justify-items: center;
+    align-items: center;
+}
+
+.service {
+    text-align: center;
+}
+
+.service img {
+    width: 100%; /* Ocupa todo el espacio disponible */
+    max-width: 200px; /* Tamaño máximo uniforme */
+    height: auto;
+}
+
+@media screen and (max-width: 1024px) {
+    .services {
+        grid-template-columns: repeat(3, 1fr); /* 3 imágenes por fila en pantallas medianas */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .services {
+        grid-template-columns: repeat(2, 1fr); /* 2 imágenes por fila en pantallas pequeñas */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .services {
+        grid-template-columns: 1fr; /* 1 imagen por fila en pantallas muy pequeñas */
+    }
+}
+
+/* Estilo del botón de WhatsApp */
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+}
+
+.whatsapp-logo {
+    width: 50px;
+    height: 50px;
+}
+
+/* Animación de desvanecimiento */
+@keyframes fade {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
+
+       
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <nav>
+        <div class="logo">
+            <a href="index.html"><img src="IMAGENES/proseport.png" alt="Logo de la empresa" id="logo"></a>
+        </div>
+        <div class="menu-icon" id="menu-icon" onclick="toggleMenu()">&#9776;</div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+    
+
+    <script>
+        // Script para el menú desplegable en pantallas pequeñas
+        const menuIcon = document.getElementById('menu-icon');
+        const navLinks = document.getElementById('nav-links');
+
+        menuIcon.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+
+    <!-- CARRUSEL E INFO -->
+    <h2>Protección de las instalaciones portuarias</h2>
+    <p style="text-align: center;">Contamos con más de 15 años de experiencia en capacitación y protección portuaria.<br>
+        Ofrecemos soluciones avanzadas y un equipo altamente capacitado para proteger sus instalaciones.</p>
+        
+        <div class="carousel-container">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="IMAGENES/imagen puerto de h2.jpg" alt="Imagen 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="IMAGENES/foto carrusel puerto 2.jpg" alt="Imagen 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="IMAGENES/foto carrusel puerto 2.jpg" alt="Imagen 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="IMAGENES/foto carrusel puerto 3.jpg" alt="Imagen 4">
+                </div>
+            </div>
+        </div>
+    <script>
+        let currentIndex = 0;
+        const items = document.querySelectorAll('.carousel-item');
+        const totalItems = items.length;
+
+        function changeSlide() {
+            items[currentIndex].classList.remove('active'); // Oculta la imagen actual
+            currentIndex = (currentIndex + 1) % totalItems; // Incrementa el índice
+            items[currentIndex].classList.add('active'); // Muestra la siguiente imagen
+        }
+
+        setInterval(changeSlide, 5000); // Cambia cada 5 segundos
+    </script>
+
+    <!-- QUIÉNES SOMOS -->
+    <div class="about-container">
+        <div class="about-text">
+            <h2>¿Quiénes Somos?</h2>
+            <h3>
+                Somos un equipo de profesionales del sector marítimo y portuario, con formación en la Autoridad
+                Marítima Argentina y la Marina Mercante. Nuestra visión integral nos permite ser un aliado estratégico para organizaciones.
+                Ofrecemos una amplia y diversa gama de servicios, respaldados por los distintos departamentos que conforman nuestra organización.
+            </h3>
+        </div>
+        <img src="IMAGENES/Imagen de WhatsApp 2024-09-05 a las 13.00.43_2752f33a.jpg" alt="Imagen descriptiva" class="about-image">
+    </div>
+
+    <!-- CLIENTES -->
+    <section id="servicios">
+        <h2>Nuestros principales clientes</h2>
+        <div class="services">
+            <div class="service">
+                <img src="IMAGENES/terminales.png" alt="Terminales Rio de la Plata">
+                <h3>TERMINALES RIO DE LA PLATA</h3>
+            </div>
+            <div class="service">
+                <img src="IMAGENES/apm.png" alt="Terminal 4 APM terminals">
+                <h3>TERMINAL 4 APM TERMINALS</h3>
+            </div>
+            <div class="service">
+                <img src="IMAGENES/pobarter.png" alt="Pobater S.A">
+                <h3>POBATER S.A</h3>
+            </div>
+            <div class="service">
+                <img src="IMAGENES/cgclogo.png" alt="Compañía General de Combustibles">
+                <h3>COMPAÑIA GENERAL DE COMBUTIBLES</h3>
+            </div>
+            <div class="service">
+                <img src="IMAGENES/terminlaes (1).png" alt="Terminal de Pasajeros Colonia Express">
+                <h3>TERMINAL DE PASAJEROS COLONIA EXPRESS</h3>
+            </div>
+    
+            <!-- Nuevas imágenes agregadas -->
+            <div class="service"><br>       
+                <img src="IMAGENES/atalaya.png" alt="Nuevo Cliente 1">
+                <h3>ATALAYA SERVICIOS FLUVIALES</h3>
+            </div>
+            <div class="service">
+                <img src="IMAGENES/sannicolas.png" alt="Nuevo Cliente 2">
+                <h3>CONSORCIO DE GESTIÓN PUERTO SAN NICOLAS</h3>
+            </div>
+            <div class="service">
+                <img src="IMAGENES/mardelplata.png" alt="Nuevo Cliente 3">
+                <h3>CONSORCIO DE GESTIÓN PUERTO MAR DEL PLATA</h3>
+            </div>
+            <div class="service">
+                <img src="IMAGENES/raizen.png" alt="Nuevo Cliente 4">
+                <h3>RAIZEN ARGENTINA S.A.U</h3>
+            </div>
+            <div class="service">
+                <img src="IMAGENES/puertos.png" alt="Nuevo Cliente 4">
+                <h3>ADMINISTRACIÓN GENERAL DE PUERTOS</h3>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+
+       
+    
+        function showNextItem() {
+            // Remove active class from current item
+            items[currentIndex].classList.remove('active');
+    
+            // Update currentIndex to the next item
+            currentIndex = (currentIndex + 1) % totalItems;
+    
+            // Add active class to the new current item
+            items[currentIndex].classList.add('active');
+    
+            // Move the carousel to show the current item
+            document.querySelector('.carousel-inner').style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+    
+        // Automatically transition every 3 seconds
+        setInterval(showNextItem, 3000);
+        function toggleMenu() {
+        var navLinks = document.getElementById("nav-links");
+        navLinks.classList.toggle("active");
+}
+
+    </script>
+    
+
+    <!-- WHATSAPP BUTTON -->
+    <a href="https://wa.me/5491164585350?text=Hola!%20Estaba%20viendo%20la%20pagina%20Proseport,%20y%20quería%20hacer%20una%20consulta" 
+       target="_blank" class="whatsapp-button">
+       <img src="IMAGENES/WhatsApp.svg" alt="WhatsApp Logo" class="whatsapp-logo">
+    </a>
+<p style="color: #f9f9f9;">barco, seguridad portuaria, seguridad, puertos, prefectura, buenos aires, puerto de buenos aires, puertos argentina, puerto mar del plata, seguros de puertos, seguridad portuaria, proseport, opr72</p>
+</body>
+</html>
